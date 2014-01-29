@@ -21,6 +21,9 @@ cat <<EOF >> Makefile && \
 ${jslib}: \$(OBJS)
 ${TAB}emcc --jcache -s TOTAL_MEMORY="$((128 * 1024 * 1024 ))" -s EXPORTED_FUNCTIONS="['fopen','fwrite','fclose','xmp_create_context','xmp_load_module','xmp_start_player','xmp_play_frame','xmp_get_frame_info','xmp_end_player','xmp_release_module','xmp_free_context','xmp_js__mi_get_loop_count','xmp_js__mi_get_buffer','xmp_js__mi_get_buffer_size']" -g -O0 \$(OBJS) -o \$@ --embed-file "$mod_dir/$mod"
 
+%.show:
+	@echo "\$* = \$(\$*)"
+
 EOF
 emmake make -j4 "${jslib}"
 
