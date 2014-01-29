@@ -24,3 +24,8 @@ extern int xmp_js__mi_get_buffer_size(struct xmp_frame_info * mi_p)
 {
     return mi_p->buffer_size;
 }
+
+extern int xmp_js__sizeof()
+{
+    return sizeof(struct xmp_frame_info);
+}

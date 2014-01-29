@@ -19,7 +19,7 @@ TAB=$'\t'
 cat <<EOF >> Makefile && \
 
 ${jslib}: \$(OBJS)
-${TAB}emcc --jcache -s TOTAL_MEMORY="$((128 * 1024 * 1024 ))" -s EXPORTED_FUNCTIONS="[$(perl -e 'print join(", ", map { chr(0x27) . "_" . $_ . chr(0x27) } sort { $a cmp $b } qw(fopen fwrite fclose xmp_create_context xmp_load_module xmp_start_player xmp_play_frame xmp_get_frame_info xmp_end_player xmp_release_module xmp_free_context xmp_js__mi_get_buffer_size xmp_js__mi_get_loop_count xmp_js__mi_get_buffer))')]" -g -O0 \$(OBJS) -o \$@ --embed-file "$mod_dir/$mod"
+${TAB}emcc --jcache -s TOTAL_MEMORY="$((128 * 1024 * 1024 ))" -s EXPORTED_FUNCTIONS="[$(perl -e 'print join(", ", map { chr(0x27) . "_" . $_ . chr(0x27) } sort { $a cmp $b } qw(fopen fwrite fclose xmp_create_context xmp_load_module xmp_start_player xmp_play_frame xmp_get_frame_info xmp_end_player xmp_release_module xmp_free_context xmp_js__sizeof xmp_js__mi_get_buffer_size xmp_js__mi_get_loop_count xmp_js__mi_get_buffer))')]" -g -O0 \$(OBJS) -o \$@ --embed-file "$mod_dir/$mod"
 
 %.show:
 	@echo "\$* = \$(\$*)"
